@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f1e8">
+  <meta name="description" content="以茶觀心，透過塔羅與易經整理疑問、看見方向。">
+  <title>澄心問道</title>
+  <style>
+    :root{--ink:#19343a;--muted:#667673;--paper:#f8f4ec;--paper2:#efe9df;--green:#5f7667;--green2:#365b4d;--lav:#74677d;--lav2:#554760;--gold:#bd9361;--line:rgba(30,57,55,.13);--shadow:0 18px 48px rgba(48,55,50,.13);--r:24px}
+    *{box-sizing:border-box} html{background:#dedbd3} body{margin:0;color:var(--ink);font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;font-size:16px;line-height:1.55;background:radial-gradient(circle at 50% 0,#fffdf8 0,#f5efe5 48%,#e8e3d9 100%);min-height:100vh}
+    button,input,textarea{font:inherit} button{color:inherit}.app{width:min(100%,480px);min-height:100svh;margin:auto;background:linear-gradient(180deg,rgba(255,253,248,.94),rgba(246,241,232,.97));position:relative;overflow:hidden;box-shadow:0 0 60px rgba(40,50,46,.12)}
+    .app:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:radial-gradient(circle at 10% 20%,rgba(189,147,97,.12),transparent 30%),radial-gradient(circle at 90% 32%,rgba(116,103,125,.11),transparent 27%)}
+    .topbar{height:70px;padding:calc(10px + env(safe-area-inset-top)) 20px 8px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:20;background:rgba(250,247,240,.84);backdrop-filter:blur(18px);border-bottom:1px solid rgba(50,75,70,.08)}
+    .brand{font-family:"Noto Serif TC","PMingLiU",serif;font-weight:800;font-size:1.3rem;letter-spacing:.13em}.mark{width:34px;height:34px;border-radius:50%;border:1px solid rgba(63,91,79,.28);display:grid;place-items:center;background:rgba(255,255,255,.6);font-size:1.05rem}.screen{display:none;padding:18px 18px 104px;position:relative;z-index:1}.screen.active{display:block;animation:enter .32s ease both}@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    h1,h2,h3,p{margin-top:0} h1,h2,h3{font-family:"Noto Serif TC","PMingLiU",serif} h1{font-size:1.8rem;line-height:1.25;margin-bottom:8px} h2{font-size:1.38rem;margin:0 0 12px} h3{font-size:1.05rem;margin-bottom:5px}.eyebrow{font-size:.8rem;letter-spacing:.16em;color:var(--gold);font-weight:800;text-transform:uppercase}.muted{color:var(--muted)}
+    .greeting{padding:2px 2px 14px}.greeting p{margin:0}.question-box{border-radius:20px;padding:15px;background:rgba(255,255,255,.75);border:1px solid var(--line);box-shadow:0 8px 24px rgba(57,69,62,.07)}textarea{width:100%;min-height:78px;resize:none;border:0;outline:0;background:transparent;color:var(--ink);font-size:1.02rem;line-height:1.5}.question-actions{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:10px}.voice{border:0;background:#edf1ed;border-radius:999px;padding:9px 13px;font-weight:700;min-height:42px}.voice.listening{background:#eadfe9;color:#664b69}.count{font-size:.82rem;color:var(--muted)}.voice-help{font-size:.79rem;color:var(--muted);margin:9px 2px 0}
+    .hero-card{margin:16px 0;border-radius:26px;min-height:175px;padding:22px;position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,rgba(63,90,78,.94),rgba(82,72,92,.92));box-shadow:var(--shadow)}.hero-card:after{content:"☯";position:absolute;right:-14px;bottom:-40px;font-size:10rem;line-height:1;color:rgba(255,255,255,.08)}.hero-card .eyebrow{color:#e8cda7}.hero-card h1{max-width:270px;margin:6px 0}.hero-card p{max-width:280px;color:rgba(255,255,255,.8);margin:0;font-size:.93rem}.hero-btn{position:absolute;right:18px;bottom:18px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;color:var(--green2);font-size:1.45rem;box-shadow:0 7px 24px rgba(0,0,0,.14)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tile{border:1px solid var(--line);background:rgba(255,255,255,.72);border-radius:20px;padding:17px;min-height:135px;text-align:left;position:relative;overflow:hidden}.tile:active{transform:scale(.98)}.tile .ico{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:var(--paper2);font-size:1.4rem;margin-bottom:18px}.tile h3{margin-bottom:2px}.tile small{color:var(--muted);font-size:.78rem}.tile .arr{position:absolute;right:14px;bottom:14px;color:var(--muted)}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 10px}.section-title h2{margin:0}.section-title span{font-size:.8rem;color:var(--muted)}.wisdom{border-radius:20px;background:linear-gradient(135deg,#edf1ea,#eee7ef);border:1px solid var(--line);padding:18px}.wisdom blockquote{margin:0 0 7px;font-family:"Noto Serif TC","PMingLiU",serif;font-size:1.12rem;font-weight:700}.wisdom p{margin:0;color:var(--muted);font-size:.9rem}
+    .recommend-list{display:grid;gap:10px}.recommend-card{display:grid;grid-template-columns:54px 1fr 26px;gap:12px;align-items:center;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:rgba(255,255,255,.74);border-radius:18px;padding:13px}.recommend-card:active{transform:scale(.99)}.recommend-icon{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#e6ece7,#eee6ef);font-size:1.55rem}.recommend-card strong{display:block;font-family:"Noto Serif TC","PMingLiU",serif}.recommend-card small{display:block;color:var(--muted);font-size:.78rem;margin-top:2px}.recommend-arrow{color:var(--green2);font-size:1.25rem}.extension{margin-top:18px;padding:18px;border-radius:22px;background:linear-gradient(135deg,#edf2ed,#f0e9f1);border:1px solid var(--line)}.extension .section-title{margin:0 0 11px}.extension-note{font-size:.78rem;color:var(--muted);margin:10px 2px 0}
+    .back{border:0;background:transparent;padding:8px 0;font-weight:800;color:var(--green2);margin-bottom:12px}.service-visual{height:225px;border-radius:28px;display:grid;place-items:center;position:relative;overflow:hidden;margin-bottom:18px;background:linear-gradient(160deg,#eee7ef,#f4eadd 58%,#e7eee9)}.service-visual:before{content:"";position:absolute;width:290px;height:290px;border:1px solid rgba(87,79,95,.14);border-radius:50%}.service-visual:after{content:"";position:absolute;width:185px;height:185px;border:1px solid rgba(87,79,95,.18);border-radius:50%}.cards-fan{position:relative;width:170px;height:140px;z-index:2}.mini-card{position:absolute;left:48px;top:10px;width:78px;height:118px;border-radius:13px;background:linear-gradient(160deg,#5e5369,#85728e);border:3px solid #d9bf91;box-shadow:0 12px 24px rgba(44,39,48,.22);display:grid;place-items:center;color:#f6d9a5;font-size:2rem}.mini-card:nth-child(1){transform:rotate(-15deg);left:17px}.mini-card:nth-child(3){transform:rotate(15deg);left:79px}.hex-symbol{font-size:7rem;color:var(--green2);z-index:2;line-height:1;text-shadow:0 10px 25px rgba(54,91,77,.15)}
+    .choices{display:grid;gap:10px;margin:16px 0}.choice{width:100%;display:flex;align-items:center;gap:13px;text-align:left;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.7);padding:14px}.choice.selected{border-color:var(--lav);box-shadow:0 0 0 2px rgba(116,103,125,.14)}.choice strong{display:block}.choice small{color:var(--muted);font-size:.78rem}.choice-icon{width:42px;height:42px;border-radius:13px;background:#eee8ef;display:grid;place-items:center;font-size:1.2rem}.primary{width:100%;border:0;border-radius:999px;background:var(--lav2);color:white;padding:14px 20px;font-weight:800;letter-spacing:.08em;box-shadow:0 10px 22px rgba(85,71,96,.2)}.primary.green{background:var(--green2)}.primary:active{transform:translateY(1px)}.secondary{width:100%;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.7);padding:13px 20px;font-weight:800}
+    .draw-stage{min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center}.draw-card{width:190px;height:300px;border-radius:22px;background:linear-gradient(160deg,#493f56,#75647f);border:6px double #d9bd8b;box-shadow:0 28px 48px rgba(52,45,59,.3);display:grid;place-items:center;color:#f0d09b;font-size:5.4rem;position:relative;transition:.6s}.draw-card:before{content:"";position:absolute;inset:13px;border:1px solid rgba(244,215,168,.45);border-radius:14px}.draw-card.flipped{transform:rotateY(180deg) scale(.95)}.draw-hint{text-align:center;color:var(--muted);margin-top:22px}
+    .coin-panel{text-align:center;padding-top:8px}.coin-progress{font-weight:800;color:var(--green2);margin-bottom:6px}.coin-instruction{color:var(--muted);margin-bottom:18px}.coins{display:flex;justify-content:center;gap:14px;margin:18px 0}.coin{width:68px;height:68px;border-radius:50%;border:3px double #9a723d;background:radial-gradient(circle at 35% 28%,#f9dfa3,#c7944c 62%,#9b6d32);box-shadow:0 9px 18px rgba(90,61,26,.2);display:grid;place-items:center;color:#62441f;font-weight:900}.coin.tossing{animation:toss .55s ease}@keyframes toss{50%{transform:translateY(-18px) rotateY(540deg) scale(.86)}}.lines{width:230px;margin:22px auto;display:flex;flex-direction:column-reverse;gap:10px}.line-row{display:grid;grid-template-columns:40px 1fr 42px;align-items:center;gap:8px;font-size:.78rem;color:var(--muted)}.yao{height:12px;display:flex;gap:13px;align-items:center}.yao i{display:block;height:10px;background:var(--green2);border-radius:3px;flex:1}.yao.yang{gap:0}.line-row.moving .yao i{background:var(--gold)}.line-row b{font-size:.75rem;color:var(--gold)}
+    .result-head{text-align:center;margin:4px 0 20px}.result-card{width:160px;height:245px;border-radius:20px;margin:14px auto;background:linear-gradient(180deg,#5e5369,#87738f);border:5px double #d7bb87;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#ffe2ad;box-shadow:var(--shadow)}.result-card .symbol{font-size:4.5rem}.result-card .roman{font-family:serif;letter-spacing:.16em}.three-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}.three-card-mini{min-width:0;border-radius:15px;padding:12px 5px;background:linear-gradient(180deg,#5e5369,#87738f);border:3px double #d7bb87;color:#ffe2ad;box-shadow:0 10px 22px rgba(52,45,59,.18)}.three-card-mini .position{display:block;font-size:.68rem;color:#f2dbc1;white-space:nowrap}.three-card-mini .symbol{display:block;font-size:2.25rem;line-height:1.2;margin:7px 0}.three-card-mini strong{display:block;font-family:"Noto Serif TC","PMingLiU",serif;font-size:.86rem;color:white;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.result-hex{font-size:8rem;color:var(--green2);line-height:1;margin:3px auto 8px}.result-title{font-size:1.55rem;margin:0}.keywords{color:var(--gold);font-weight:800;margin:4px 0}.result-section{background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:18px;padding:16px;margin:10px 0}.result-section p{margin:0;color:#344c4a}.result-section h3{display:flex;gap:9px;align-items:center}.result-section h3 span{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--paper2);flex:0 0 auto}.quote{background:linear-gradient(135deg,#f0eaf1,#e9efea);font-family:"Noto Serif TC","PMingLiU",serif;font-size:1.12rem;font-weight:700;text-align:center;padding:22px}.result-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    .saved-list{display:grid;gap:12px}.saved-item{border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.72);padding:15px;text-align:left}.saved-item .meta{font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between}.saved-item h3{margin:5px 0}.empty{text-align:center;padding:70px 24px;color:var(--muted)}.empty .big{font-size:3rem;margin-bottom:12px}.profile-card{border-radius:24px;padding:22px;background:linear-gradient(135deg,#e8eee9,#eee7ef);margin-bottom:16px}.setting{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:15px 2px}.switch{width:50px;height:29px;border-radius:99px;background:#d2d6d1;padding:3px;border:0}.switch:after{content:"";display:block;width:23px;height:23px;border-radius:50%;background:white;box-shadow:0 2px 6px #999;transition:.2s}.switch.on{background:var(--green)}.switch.on:after{transform:translateX(21px)}
+    .nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,480px);height:82px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(250,247,240,.92);backdrop-filter:blur(20px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);z-index:30}.nav button{border:0;background:transparent;font-size:.74rem;color:var(--muted);display:grid;place-items:center;gap:2px}.nav button span{font-size:1.25rem;line-height:1}.nav button.active{color:var(--green2);font-weight:900}
+    .toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,12px);background:#223a37;color:white;padding:11px 17px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:60;white-space:nowrap}.toast.show{opacity:1;transform:translate(-50%,0)}
+    .welcome{position:fixed;inset:0;z-index:100;background:linear-gradient(180deg,#fbf7ef,#e9e4db);display:flex;justify-content:center}.welcome-inner{width:min(100%,480px);min-height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;padding:calc(54px + env(safe-area-inset-top)) 28px calc(28px + env(safe-area-inset-bottom));position:relative;overflow:hidden}.welcome-art{height:39vh;min-height:260px;width:100%;position:relative;display:grid;place-items:center}.welcome-art:before{content:"☯";font-size:13rem;line-height:1;color:rgba(72,100,84,.08);position:absolute}.tea-cup{width:140px;height:70px;border-radius:12px 12px 70px 70px;background:linear-gradient(180deg,#8aa091,#526d5e);position:relative;box-shadow:0 26px 34px rgba(57,75,65,.2)}.tea-cup:before{content:"";position:absolute;width:90px;height:90px;border:5px solid rgba(83,104,91,.65);border-left-color:transparent;border-radius:50%;right:-58px;top:-7px}.steam{position:absolute;font-family:serif;font-size:5.6rem;color:rgba(107,89,112,.38);top:-92px;left:37px;transform:rotate(90deg)}.welcome h1{font-size:2.45rem;letter-spacing:.16em;margin:0 0 9px}.welcome p{color:var(--muted);max-width:310px}.welcome .primary{margin-top:auto}.welcome.hide{animation:welcomeOut .5s ease forwards}@keyframes welcomeOut{to{opacity:0;transform:scale(1.04);pointer-events:none}}
+    .modal{position:fixed;inset:0;background:rgba(27,38,36,.42);z-index:80;display:none;align-items:flex-end;justify-content:center}.modal.open{display:flex}.sheet{width:min(100%,480px);border-radius:28px 28px 0 0;background:#faf7f0;padding:22px 20px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -25px 60px rgba(19,30,28,.18)}.sheet p{color:var(--muted)}
+    @media(min-width:700px){body{padding:24px}.app{min-height:calc(100svh - 48px);border-radius:34px}.nav{bottom:24px;border-radius:0 0 34px 34px}.topbar{border-radius:34px 34px 0 0}.welcome-inner{min-height:calc(100svh - 48px);margin-top:24px;border-radius:34px;background:linear-gradient(180deg,#fbf7ef,#e9e4db);box-shadow:var(--shadow)}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar"><div class="brand">澄心問道</div><button class="mark" aria-label="使用說明" onclick="openInfo()">茶</button></header>
+
+    <main>
+      <section id="home" class="screen active">
+        <div class="greeting"><div class="eyebrow">今日問候</div><h1 id="greeting">您好，願您在這裡，遇見更清晰的自己。</h1></div>
+        <div class="question-box">
+          <textarea id="question" maxlength="300" placeholder="心裡有什麼疑問？可以慢慢說……" aria-label="輸入心中的疑問"></textarea>
+          <div class="question-actions"><button type="button" class="voice" id="voiceBtn" onclick="startVoice()">🎙 語音輸入</button><span class="count"><span id="charCount">0</span>/300</span></div>
+          <p class="voice-help">若手機未能直接收音，點文字框後可使用鍵盤上的麥克風聽寫。</p>
+        </div>
+        <div class="hero-card"><div class="eyebrow">一杯茶 · 一個提問</div><h1>迷霧之中，也有屬於您的答案</h1><p>先把心放慢，再選一種方式觀看此刻。</p><button class="hero-btn" onclick="showScreen('explore')" aria-label="開始探索">→</button></div>
+        <div class="grid">
+          <button class="tile" onclick="openTarot()"><span class="ico">✦</span><h3>塔羅建議</h3><small>探索內心 · 看見可能</small><span class="arr">›</span></button>
+          <button class="tile" onclick="openYijing()"><span class="ico">☰</span><h3>易經卦象</h3><small>順應時勢 · 明辨進退</small><span class="arr">›</span></button>
+          <button class="tile" onclick="showScreen('tea')"><span class="ico">♨</span><h3>今日茶語</h3><small>一盞茶 · 一段靜思</small><span class="arr">›</span></button>
+          <button class="tile" onclick="showScreen('saved')"><span class="ico">♡</span><h3>我的收藏</h3><small>珍藏指引 · 隨時回顧</small><span class="arr">›</span></button>
+        </div>
+        <div class="section-title"><h2>今日一盞</h2><span>每日更新</span></div>
+        <div class="wisdom"><blockquote id="dailyQuote"></blockquote><p id="dailyNote"></p></div>
+        <div class="section-title"><h2>茶老師推薦</h2><span>延伸觀看</span></div>
+        <div class="recommend-list" id="homeRecommendations"></div>
+      </section>
+
+      <section id="explore" class="screen">
+        <div class="eyebrow">兩種觀照</div><h1>選一條路，看看此刻的自己</h1><p class="muted">塔羅看見內在狀態，易經觀察時勢進退。兩者都只是整理思緒的鏡子。</p>
+        <div class="choices">
+          <button class="choice" onclick="openTarot()"><span class="choice-icon">✦</span><span><strong>塔羅建議</strong><small>適合情緒、關係與內心選擇</small></span></button>
+          <button class="choice" onclick="openYijing()"><span class="choice-icon">☯</span><span><strong>易經卦象</strong><small>適合時機、方向與進退判斷</small></span></button>
+        </div>
+        <div class="wisdom"><blockquote>問卦之前，先問自己：我真正害怕的，是哪一件事？</blockquote><p>問題越清楚，得到的提醒越能回到生活。</p></div>
+      </section>
+
+      <section id="tarot" class="screen">
+        <button class="back" onclick="showScreen('home')">‹ 回首頁</button>
+        <div class="service-visual"><div class="cards-fan"><div class="mini-card">☾</div><div class="mini-card">✦</div><div class="mini-card">☼</div></div></div>
+        <div class="eyebrow">茶老師處世智慧</div><h1>塔羅建議</h1><p class="muted">在迷惘之時，讓象徵照見心裡真正重視的事。</p>
+        <div class="choices">
+          <button class="choice selected" data-spread="one" onclick="selectSpread(this)"><span class="choice-icon">▣</span><span><strong>單張指引</strong><small>我現在最需要看見什麼</small></span></button>
+          <button class="choice" data-spread="three" onclick="selectSpread(this)"><span class="choice-icon">▥</span><span><strong>三張澄心牌陣</strong><small>卡住 · 看清 · 下一步</small></span></button>
+        </div>
+        <button class="primary" onclick="startTarotDraw()">開始抽牌 →</button>
+      </section>
+
+      <section id="tarotDraw" class="screen">
+        <button class="back" onclick="showScreen('tarot')">‹ 返回選擇</button>
+        <div class="draw-stage"><button class="draw-card" onclick="revealTarot()" aria-label="翻開塔羅牌">✦</button><p class="draw-hint" id="drawHint">先慢慢呼吸，再輕觸牌面。</p></div>
+      </section>
+
+      <section id="yijing" class="screen">
+        <button class="back" onclick="showScreen('home')">‹ 回首頁</button>
+        <div class="service-visual"><div class="hex-symbol">䷃</div></div>
+        <div class="eyebrow">茶老師處世智慧</div><h1>易經卦象</h1><p class="muted">觀察當下條件，分辨適合前進、等待，或先把基礎安頓好。</p>
+        <div class="choices">
+          <button class="choice selected" data-method="system" onclick="selectMethod(this)"><span class="choice-icon">☯</span><span><strong>靜心起卦</strong><small>系統產生一卦，適合快速整理</small></span></button>
+          <button class="choice" data-method="coins" onclick="selectMethod(this)"><span class="choice-icon">●</span><span><strong>六次擲幣</strong><small>一步一步形成六爻</small></span></button>
+        </div>
+        <button class="primary green" onclick="castYijing()">開始起卦 →</button>
+      </section>
+
+      <section id="coinCast" class="screen">
+        <button class="back" onclick="showScreen('yijing')">‹ 返回起卦方式</button>
+        <div class="coin-panel">
+          <div class="eyebrow">六次擲幣 · 由下往上成卦</div>
+          <h1>第 <span id="coinStep">1</span> 次｜<span id="lineName">初爻</span></h1>
+          <p class="coin-instruction" id="coinInstruction">靜心想著您的問題，再擲出第一爻。</p>
+          <div class="coins"><div class="coin" id="coin1">茶</div><div class="coin" id="coin2">茶</div><div class="coin" id="coin3">茶</div></div>
+          <div class="lines" id="hexLines"></div>
+          <button class="primary green" id="tossBtn" onclick="tossCoins()">擲出三枚錢幣</button>
+          <p class="voice-help">正面為 3、背面為 2；三枚合計形成陰爻、陽爻或動爻。</p>
+        </div>
+      </section>
+
+      <section id="result" class="screen"><div id="resultContent"></div></section>
+
+      <section id="tea" class="screen">
+        <button class="back" onclick="showScreen('home')">‹ 回首頁</button><div class="eyebrow">今日茶語</div><h1>留一點時間，讓心慢慢展開</h1>
+        <div class="service-visual"><div class="tea-cup"><div class="steam">≈</div></div></div>
+        <div class="wisdom quote"><blockquote id="teaQuote"></blockquote><p id="teaNote"></p></div>
+        <div class="section-title"><h2>茶老師陪您想一想</h2></div>
+        <div class="result-section"><h3><span>葉</span> 今日觀心</h3><p>有些事情不是沒有答案，而是心還太急。先讓問題在心裡停一會兒，就像茶葉遇水，需要時間舒展。</p></div>
+        <button class="secondary" onclick="saveDaily()">♡ 收藏今日茶語</button>
+      </section>
+
+      <section id="saved" class="screen"><div class="eyebrow">我的收藏</div><h1>曾經照亮您的話</h1><div id="savedList" class="saved-list"></div></section>
+
+      <section id="profile" class="screen">
+        <div class="eyebrow">我的設定</div><h1>讓閱讀更合適自己</h1>
+        <div class="profile-card"><h2>澄心問道</h2><p>目前為第一版手機原型。您的問題與收藏只保存在這部裝置中。</p></div>
+        <div class="setting"><span><strong>大字模式</strong><br><small class="muted">放大內文與按鈕</small></span><button id="fontSwitch" class="switch" onclick="toggleLargeText()" aria-label="切換大字模式"></button></div>
+        <div class="setting"><span><strong>每日茶語提醒</strong><br><small class="muted">正式版開放設定時間</small></span><button class="switch" onclick="this.classList.toggle('on')" aria-label="切換每日提醒"></button></div>
+        <div class="result-section"><h3><span>心</span> 使用原則</h3><p>本服務協助自我整理，不代替醫療、法律、財務或其他重大專業決策。遇到高風險情況，請優先尋求可信任的人與專業協助。</p></div>
+      </section>
+    </main>
+
+    <nav class="nav" aria-label="主要導覽">
+      <button class="active" data-nav="home" onclick="showScreen('home')"><span>⌂</span>首頁</button>
+      <button data-nav="explore" onclick="showScreen('explore')"><span>◉</span>探索</button>
+      <button data-nav="saved" onclick="showScreen('saved')"><span>♡</span>收藏</button>
+      <button data-nav="profile" onclick="showScreen('profile')"><span>○</span>我的</button>
+    </nav>
+  </div>
+
+  <div id="welcome" class="welcome"><div class="welcome-inner"><div class="eyebrow">澄心茶盞</div><div class="welcome-art"><div class="tea-cup"><div class="steam">≈</div></div></div><h1>澄心問道</h1><p>遇事不決，靜心問道。以一盞茶的時間，看清眼前的方向。</p><button class="primary" onclick="enterApp()">開始探索 →</button></div></div>
+  <div id="infoModal" class="modal" onclick="closeInfo(event)"><div class="sheet"><h2>先澄心，再問道</h2><p>塔羅與易經在這裡是整理思緒的鏡子，不替您斷定命運。請帶著一個清楚問題，閱讀後再回到自己的處境與可控行動。</p><button class="primary green" onclick="closeInfo()">我知道了</button></div></div>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="tea-data.js"></script>
+  <script>
+    const daily=[
+      ['茶葉開得慢，不代表它沒有香。','有些成長，需要更多時間與溫度。'],
+      ['心別太滿，才裝得下新的風景。','茶杯留一點空間，也是待人的分寸。'],
+      ['好茶不必每泡都濃，情分也不必每次證明。','真心送出之後，不必急著等待回聲。'],
+      ['苦不是最後的味道，回甘常在稍後。','先別用眼前的一刻，替整段人生下結論。'],
+      ['火太急，茶容易傷；心太急，話容易重。','今天慢半拍，再決定要不要開口。'],
+      ['茶需要醒，人也需要。','離開熟悉的角色後，給自己一點重新舒展的時間。'],
+      ['一盞茶的好，不只在香，也在喝完之後心是否安定。','適合自己的選擇，常讓心慢慢安靜下來。']
+    ];
+    const recommendationCatalog=[
+      {id:'wisdom',type:'video',title:'茶老師的處世智慧',description:'從一盞茶，看清關係、選擇與人生進退。',icon:'茶',url:'https://www.youtube.com/results?search_query=%E6%BE%84%E5%BF%83%E8%8C%B6%E7%9B%9E+%E8%8C%B6%E8%80%81%E5%B8%AB+%E8%99%95%E4%B8%96%E6%99%BA%E6%85%A7',visible:true,tags:['tarot','yijing','decision','relationship']},
+      {id:'quotes',type:'video',title:'茶老師的金句',description:'給熟齡朋友的短篇提醒與溫柔陪伴。',icon:'句',url:'https://www.youtube.com/results?search_query=%E6%BE%84%E5%BF%83%E8%8C%B6%E7%9B%9E+%E8%8C%B6%E8%80%81%E5%B8%AB%E7%9A%84%E9%87%91%E5%8F%A5',visible:true,tags:['tarot','emotion','action']},
+      {id:'season',type:'video',title:'節氣茶語',description:'跟著季節喝茶，也讓生活慢慢換氣。',icon:'節',url:'https://www.youtube.com/results?search_query=%E6%BE%84%E5%BF%83%E8%8C%B6%E7%9B%9E+%E7%AF%80%E6%B0%A3%E8%8C%B6%E8%AA%9E',visible:true,tags:['yijing','timing','season']},
+      {id:'classroom',type:'video',title:'茶藝教室',description:'泡茶、選茶與茶席生活的實用內容。',icon:'器',url:'https://www.youtube.com/results?search_query=%E6%BE%84%E5%BF%83%E8%8C%B6%E7%9B%9E+%E8%8C%B6%E8%97%9D%E6%95%99%E5%AE%A4',visible:true,tags:['tea','action']},
+      {id:'courses',type:'course',title:'茶老師線上與實體課程',description:'課程開放後由此進入介紹與報名。',icon:'課',url:'',visible:false,status:'planned',tags:['course']},
+      {id:'tea-products',type:'product',title:'茶葉與茶器推薦',description:'未來可連接品牌商品、合作選品或外部商店。',icon:'選',url:'',visible:false,status:'planned',disclosure:'商品或合作推薦上線時將清楚標示',tags:['product','tea']}
+    ];
+    const tarot=[
+      {name:'愚者',roman:'0',symbol:'◌',keys:'開始 · 信任 · 保留彈性',situation:'您可能站在新的起點，既期待又擔心自己準備得不夠。愚者不是要您莽撞，而是提醒：有些路，必須走出第一步才會逐漸看清。',tea:'第一次沖泡，不必急著追求最濃。先讓水與茶相遇，看看茶性如何舒展。新的開始，也適合用小步試探。',action:'把想做的事縮小成一個今天能完成的步驟，不需要一次證明全部。',avoid:'先別因為別人的速度，急著承諾超過自己能力的事。',quote:'開始不必完美，只要心裡還留著願意。'},
+      {name:'女祭司',roman:'II',symbol:'☾',keys:'直覺 · 觀察 · 暫不表態',situation:'表面資訊可能還不完整，而您心裡已察覺某些細微的不協調。此刻適合多觀察，不必急著替事情定性。',tea:'聞香不是為了立即判斷好壞，而是先辨認它的層次。人心也是如此，安靜一點，才聽得見真正的顧慮。',action:'寫下三個讓您感到不安的細節，分清楚哪些是事實、哪些只是猜測。',avoid:'不要把直覺當成證據，也不要因為怕尷尬而忽略明顯訊號。',quote:'看不清時，先不急著站隊。'},
+      {name:'皇后',roman:'III',symbol:'❦',keys:'滋養 · 關係 · 接納',situation:'您可能把許多力氣放在照顧別人，卻很少問自己是否也被好好安放。皇后提醒，付出要有源頭，照顧也需要界線。',tea:'一壺茶若不再添水，終究會空。願意照顧自己，不是自私，而是讓善意可以長久。',action:'今天替自己保留一段不被打擾的時間，做一件真正補充精神的事。',avoid:'先別用犧牲自己來證明感情或責任。',quote:'能長久給予的人，也懂得替自己添水。'},
+      {name:'皇帝',roman:'IV',symbol:'◇',keys:'秩序 · 原則 · 承擔',situation:'事情需要更明確的界線、規則或責任分工。只靠善意可能不夠，清楚反而能保護關係。',tea:'茶席上每件器物都有位置，不是拘束，而是讓動作穩定、讓彼此安心。',action:'把責任、期限與不能接受的條件，用一句清楚而平和的話說出來。',avoid:'不要因為怕被說強硬，就讓模糊持續消耗您。',quote:'溫和可以保留，原則也不必放下。'},
+      {name:'戀人',roman:'VI',symbol:'♡',keys:'選擇 · 價值 · 真誠',situation:'眼前看似是在選人或選路，真正要選的，可能是您願意成為怎樣的自己。',tea:'選茶不只看包裝與名氣，還要看它是否適合自己的身體與日常。關係與選擇，也要回到是否相合。',action:'列出這個選擇最符合與最違背您價值的地方，再看哪一邊更重要。',avoid:'不要只因害怕失去，就答應一個讓自己長期不舒服的條件。',quote:'真正適合的選擇，會讓心比較安定。'},
+      {name:'戰車',roman:'VII',symbol:'✧',keys:'前進 · 專注 · 掌握方向',situation:'您具備前進的力量，但同時被不同意見拉扯。戰車提醒，速度不是首要，方向一致才是。',tea:'注水要穩，水柱才能把茶葉帶動；手若左右搖擺，再好的茶也難有一致滋味。',action:'今天只選一個最重要目標，暫停其餘分心事項。',avoid:'別把忙碌誤認為進展，也不要在情緒高點作最後決定。',quote:'走得快以前，先讓方向穩下來。'},
+      {name:'力量',roman:'VIII',symbol:'∞',keys:'柔韌 · 耐心 · 內在力量',situation:'這件事不適合靠硬碰硬處理。真正有力量的方式，可能是穩住自己，不讓情緒替您作主。',tea:'火候不是越大越好。能把水溫掌握得恰當，才是熟練；能把情緒放在合適位置，也是成熟。',action:'把原本想立刻說出口的話，先改寫成不攻擊人的表達。',avoid:'不必壓抑感受，但別在最生氣時採取不可逆行動。',quote:'柔和不是退讓，是有能力不被情緒帶走。'},
+      {name:'隱者',roman:'IX',symbol:'✦',keys:'獨處 · 內省 · 真正需要',situation:'外界的聲音太多，讓您暫時聽不清自己。隱者不是叫您逃開，而是先把注意力收回來。',tea:'獨自泡茶時，少了應酬的熱鬧，反而更容易分辨香氣與身體感受。',action:'給自己二十分鐘不看訊息，寫下「如果不用向任何人證明，我會怎麼選」。',avoid:'不要把暫時獨處變成長期封閉，需要時仍要找可信任的人商量。',quote:'有些答案，不在更大的聲音裡。'},
+      {name:'命運之輪',roman:'X',symbol:'☼',keys:'轉變 · 時機 · 接受變動',situation:'環境正在改變，過去有效的方法不一定仍適合。您能做的不是控制所有變化，而是調整自己的位置。',tea:'同一款茶，在不同季節、水質與心境裡，會呈現不同滋味。改變不一定是失去，也可能讓另一面出場。',action:'找出目前已經改變的一項條件，據此調整原來計畫的一小部分。',avoid:'不要只因為曾經成功，就拒絕重新評估。',quote:'時勢會轉，心也可以換一種走法。'},
+      {name:'正義',roman:'XI',symbol:'⚖',keys:'衡量 · 責任 · 清楚',situation:'現在需要的不是偏袒任何一方，而是把事實、責任與後果放在同一張桌上看。',tea:'茶量、水量與時間彼此相關；只改一項而不看其他條件，滋味容易失衡。',action:'把選擇的短期好處、長期代價與誰承擔後果分別寫清楚。',avoid:'別因為一時同情，就替別人承擔本應由他負責的部分。',quote:'公平不是每個人得到一樣，而是責任回到適當位置。'},
+      {name:'倒吊人',roman:'XII',symbol:'▽',keys:'暫停 · 換位 · 重新理解',situation:'努力沒有立即見效，不一定表示方向錯了。此刻可能需要暫停用力，從另一個角度看事情。',tea:'茶葉沉在水中，看似沒有動作，內裡其實正在釋放。暫停也可能是一種變化。',action:'請一位立場不同但可信任的人，說出他看到而您沒注意到的地方。',avoid:'先不要為了結束不確定，就接受不合理的條件。',quote:'停一下，不代表放棄。'},
+      {name:'星星',roman:'XVII',symbol:'✷',keys:'希望 · 修復 · 新方向',situation:'您不是沒有方向，而是剛離開熟悉的位置，還不確定新的自己能走多遠。希望不是保證，而是保留繼續嘗試的空間。',tea:'有些緊結的茶葉，不會在第一泡全部展開。我們不責怪它開得慢，只是多給一點時間與溫度。',action:'替想做的事安排三十分鐘，只完成一個最小步驟，再記下感受。',avoid:'先別拿剛開始的自己，和別人累積多年的成果比較。',quote:'走得慢，不代表走不到。'}
+    ];
+    let spread='one', method='system', currentResult=null, coinLines=[], tossing=false;
+    const $=id=>document.getElementById(id);
+    const dayIndex=()=>{const d=new Date();return (d.getFullYear()*372+(d.getMonth()+1)*31+d.getDate())%daily.length};
+    function init(){const q=daily[dayIndex()];$('dailyQuote').textContent='「'+q[0]+'」';$('dailyNote').textContent=q[1];$('teaQuote').textContent='「'+q[0]+'」';$('teaNote').textContent=q[1];$('homeRecommendations').innerHTML=recommendationCards(recommendationCatalog.filter(x=>x.visible).slice(0,3));$('question').addEventListener('input',e=>$('charCount').textContent=e.target.value.length);if(localStorage.getItem('cx-entered'))$('welcome').style.display='none';if(localStorage.getItem('cx-large')){$('fontSwitch').classList.add('on');document.documentElement.style.fontSize='18px'}renderSaved()}
+    function enterApp(){localStorage.setItem('cx-entered','1');$('welcome').classList.add('hide');setTimeout(()=>$('welcome').style.display='none',500)}
+    function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');const root=['home','explore','saved','profile'].includes(id)?id:'explore';document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.nav===root));window.scrollTo({top:0,behavior:'smooth'});if(id==='saved')renderSaved()}
+    function selectSpread(el){document.querySelectorAll('[data-spread]').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');spread=el.dataset.spread}
+    function selectMethod(el){document.querySelectorAll('[data-method]').forEach(x=>x.classList.remove('selected'));el.classList.add('selected');method=el.dataset.method}
+    function openTarot(){showScreen('tarot')} function openYijing(){showScreen('yijing')}
+    function startTarotDraw(){$('drawHint').textContent=spread==='three'?'先慢慢呼吸，再輕觸牌面。系統將抽出三張不同的牌。':'先慢慢呼吸，再輕觸牌面。';showScreen('tarotDraw')}
+    function revealTarot(){document.querySelector('.draw-card').classList.add('flipped');setTimeout(()=>{document.querySelector('.draw-card').classList.remove('flipped');createTarotResult()},520)}
+    function randomItem(arr){return arr[Math.floor(Math.random()*arr.length)]}
+    function safeQuestion(){return $('question').value.trim()||'我現在最需要看見什麼？'}
+    function drawDistinctCards(count){const pool=[...tarot];for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}return pool.slice(0,count)}
+    function createTarotResult(){if(spread==='three'){createThreeCardResult();return}const card=randomItem(tarot);currentResult={type:'塔羅',title:card.name+' · 正位',symbol:card.symbol,quote:card.quote,question:safeQuestion(),date:new Date().toLocaleDateString('zh-TW'),detail:card};$('resultContent').innerHTML=`<button class="back" onclick="showScreen('tarot')">‹ 再看一次</button><div class="result-head"><div class="eyebrow">您的抽牌結果</div><div class="result-card"><span class="roman">${card.roman}</span><span class="symbol">${card.symbol}</span></div><h1 class="result-title">${card.name} · 正位</h1><div class="keywords">${card.keys}</div><p class="muted">您問的是：${escapeHtml(safeQuestion())}</p></div>${resultSections(card.situation,card.tea,card.action,card.avoid,card.quote)}${extensionHtml('tarot')}${actionButtons()}`;showScreen('result')}
+    function createThreeCardResult(){const cards=drawDistinctCards(3);const positions=['卡在哪裡','需要看清','下一步'];currentResult={type:'塔羅 · 三張牌陣',title:'三張澄心牌陣',symbol:cards.map(c=>c.symbol).join(' '),quote:cards[2].quote,question:safeQuestion(),date:new Date().toLocaleDateString('zh-TW'),detail:{spread:'three',cards}};const mini=cards.map((card,i)=>`<div class="three-card-mini"><span class="position">${i+1}｜${positions[i]}</span><span class="symbol">${card.symbol}</span><strong>${card.name}</strong></div>`).join('');$('resultContent').innerHTML=`<button class="back" onclick="showScreen('tarot')">‹ 再抽一次</button><div class="result-head"><div class="eyebrow">您的三張抽牌結果</div><div class="three-card-grid">${mini}</div><h1 class="result-title">三張澄心牌陣</h1><div class="keywords">卡住 · 看清 · 下一步</div><p class="muted">您問的是：${escapeHtml(safeQuestion())}</p></div><div class="result-section"><h3><span>一</span> 我現在卡在哪裡｜${escapeHtml(cards[0].name)}</h3><p>${escapeHtml(cards[0].situation)}</p></div><div class="result-section"><h3><span>二</span> 有什麼需要看清｜${escapeHtml(cards[1].name)}</h3><p>${escapeHtml(cards[1].situation)}</p></div><div class="result-section"><h3><span>三</span> 下一步可以怎麼走｜${escapeHtml(cards[2].name)}</h3><p>${escapeHtml(cards[2].action)}</p></div><div class="result-section"><h3><span>茶</span> 茶老師的茶喻</h3><p>${escapeHtml(cards[1].tea)}</p></div><div class="result-section"><h3><span>止</span> 此刻先別急著做</h3><p>${escapeHtml(cards[1].avoid)}</p></div><div class="result-section quote"><p>「${escapeHtml(cards[2].quote)}」</p></div>${extensionHtml('tarot')}${actionButtons()}`;showScreen('result')}
+    function castYijing(){if(method==='coins'){startCoinCast();return}createYijingResult(null,'靜心起卦')}
+    function startCoinCast(){coinLines=[];tossing=false;$('hexLines').innerHTML='';$('coinStep').textContent='1';$('lineName').textContent='初爻';$('coinInstruction').textContent='靜心想著您的問題，再擲出第一爻。';$('tossBtn').disabled=false;$('tossBtn').textContent='擲出三枚錢幣';['coin1','coin2','coin3'].forEach(id=>$(id).textContent='茶');showScreen('coinCast')}
+    function tossCoins(){if(tossing||coinLines.length>=6)return;tossing=true;const values=[0,0,0].map(()=>Math.random()<.5?3:2);const coinEls=[$('coin1'),$('coin2'),$('coin3')];coinEls.forEach((el,i)=>{el.classList.remove('tossing');void el.offsetWidth;el.classList.add('tossing');setTimeout(()=>el.textContent=values[i]===3?'正':'背',270)});$('tossBtn').disabled=true;setTimeout(()=>{const sum=values.reduce((a,b)=>a+b,0);coinLines.push(sum);renderCoinLines();tossing=false;coinEls.forEach(el=>el.classList.remove('tossing'));if(coinLines.length===6){$('coinInstruction').textContent='六爻已成，正在為您整理卦象與茶老師建議。';$('tossBtn').textContent='六爻已完成';setTimeout(()=>createYijingResult(hexagramNumberFromLines(coinLines),'六次擲幣'),700)}else{const names=['初爻','二爻','三爻','四爻','五爻','上爻'];$('coinStep').textContent=String(coinLines.length+1);$('lineName').textContent=names[coinLines.length];$('coinInstruction').textContent='第 '+coinLines.length+' 爻已成，請繼續擲出下一爻。';$('tossBtn').disabled=false;$('tossBtn').textContent='擲出第 '+(coinLines.length+1)+' 爻'}},620)}
+    function renderCoinLines(){const names=['初','二','三','四','五','上'];$('hexLines').innerHTML=coinLines.map((sum,i)=>{const yang=sum===7||sum===9,moving=sum===6||sum===9;return `<div class="line-row ${moving?'moving':''}"><span>${names[i]}爻</span><span class="yao ${yang?'yang':'yin'}"><i></i>${yang?'':'<i></i>'}</span><b>${moving?'動爻':''}</b></div>`}).join('')}
+    function hexagramNumberFromLines(lines){const trigramKey=bits=>bits.join('');const trigramIndex={'111':0,'110':1,'101':2,'100':3,'011':4,'010':5,'001':6,'000':7};const table=[[1,10,13,25,44,6,33,12],[43,58,49,17,28,47,31,45],[14,38,30,21,50,64,56,35],[34,54,55,51,32,40,62,16],[9,61,37,42,57,59,53,20],[5,60,63,3,48,29,39,8],[26,41,22,27,18,4,52,23],[11,19,36,24,46,7,15,2]];const bits=lines.map(v=>v===7||v===9?1:0);const lower=trigramIndex[trigramKey(bits.slice(0,3))],upper=trigramIndex[trigramKey(bits.slice(3,6))];return table[upper][lower]}
+    function createYijingResult(number,source){const all=window.TEA_HEXAGRAM_PHRASES||[];if(!all.length){toast('卦象資料尚未載入');return}const candidates=number?all.filter(x=>x.hexagramNumber===number):all;const item=randomItem(candidates.length?candidates:all);const symbol=String.fromCodePoint(0x4DC0+item.hexagramNumber-1);const action=yijingAction(item.hexagramNumber);const moving=source==='六次擲幣'?coinLines.map((v,i)=>(v===6||v===9)?['初','二','三','四','五','上'][i]+'爻':'').filter(Boolean):[];const methodNote=source==='六次擲幣'?(moving.length?'動爻：'+moving.join('、'):'本次無動爻，以本卦整體觀照'):'系統靜心取卦';currentResult={type:'易經 · '+source,title:item.hexagramName,symbol,quote:item.phrase,question:safeQuestion(),date:new Date().toLocaleDateString('zh-TW'),detail:{...item,method:source,coinLines:[...coinLines]}};$('resultContent').innerHTML=`<button class="back" onclick="showScreen('yijing')">‹ 再起一卦</button><div class="result-head"><div class="eyebrow">${source}結果</div><div class="result-hex">${symbol}</div><h1 class="result-title">${item.hexagramName}</h1><div class="keywords">第 ${item.hexagramNumber} 卦 · ${item.variant}</div><p class="muted">${escapeHtml(methodNote)}</p><p class="muted">您問的是：${escapeHtml(safeQuestion())}</p></div>${resultSections(item.guidance,item.phrase,action.do,action.avoid,item.phrase)}${extensionHtml('yijing')}${actionButtons()}`;showScreen('result')}
+    function yijingAction(n){const modes=[
+      {do:'先把已知與未知分開，補齊一項關鍵資訊，再決定下一步。',avoid:'資訊未明時，不宜因怕錯失而做最後承諾。'},
+      {do:'選一件可以掌握的小事穩定推進，讓條件慢慢成熟。',avoid:'不必用更大的力氣，去推動尚未準備好的事情。'},
+      {do:'把責任、期限與界線說清楚，再觀察對方如何回應。',avoid:'不要用一味忍讓維持表面和平。'},
+      {do:'回頭檢查原來的方法，保留核心，也允許調整做法。',avoid:'不要因為已經投入很多，就拒絕看見需要改變的地方。'},
+      {do:'暫緩一天，讓情緒落下，再用較平靜的語氣處理。',avoid:'此刻不宜在氣頭上說重話或做不可逆的決定。'}
+    ];return modes[(n-1)%modes.length]}
+    function resultSections(situation,tea,action,avoid,quote){return `<div class="result-section"><h3><span>心</span> 此刻的情勢</h3><p>${escapeHtml(situation)}</p></div><div class="result-section"><h3><span>茶</span> 茶老師的茶喻</h3><p>${escapeHtml(tea)}</p></div><div class="result-section"><h3><span>行</span> 適合行動</h3><p>${escapeHtml(action)}</p></div><div class="result-section"><h3><span>止</span> 先別急著做</h3><p>${escapeHtml(avoid)}</p></div><div class="result-section quote"><p>「${escapeHtml(quote)}」</p></div>`}
+    function recommendationCards(items){return items.map(x=>`<a class="recommend-card" href="${escapeHtml(x.url)}" target="_blank" rel="noopener noreferrer" aria-label="前往${escapeHtml(x.title)}"><span class="recommend-icon">${escapeHtml(x.icon)}</span><span><strong>${escapeHtml(x.title)}</strong><small>${escapeHtml(x.description)}</small></span><span class="recommend-arrow">›</span></a>`).join('')}
+    function extensionHtml(kind){const preferred=kind==='yijing'?['season','wisdom']:['wisdom','quotes'];const items=preferred.map(id=>recommendationCatalog.find(x=>x.id===id)).filter(x=>x&&x.visible);return `<div class="extension"><div class="section-title"><h2>延伸一盞茶</h2><span>澄心茶盞</span></div><div class="recommend-list">${recommendationCards(items)}</div><p class="extension-note">離開 App 前往外部頻道觀看；未來課程與商品推薦也會保留在這個位置。</p></div>`}
+    function actionButtons(){return `<div class="result-actions"><button class="secondary" onclick="saveResult()">♡ 保存結果</button><button class="primary green" onclick="shareResult()">分享摘要</button></div>`}
+    function getSaved(){try{return JSON.parse(localStorage.getItem('cx-saved')||'[]')}catch{return[]}}
+    function saveResult(){if(!currentResult)return;const arr=getSaved();arr.unshift({...currentResult,id:Date.now()});localStorage.setItem('cx-saved',JSON.stringify(arr.slice(0,30)));toast('已保存到收藏')}
+    function saveDaily(){const q=daily[dayIndex()];currentResult={type:'今日茶語',title:'今日一盞',symbol:'茶',quote:q[0],question:'',date:new Date().toLocaleDateString('zh-TW'),detail:{note:q[1]}};saveResult()}
+    function renderSaved(){const arr=getSaved(),el=$('savedList');if(!arr.length){el.innerHTML='<div class="empty"><div class="big">♡</div><h2>還沒有收藏</h2><p>遇見想慢慢記住的話，就把它留在這裡。</p></div>';return}el.innerHTML=arr.map(x=>`<button class="saved-item" onclick="openSaved(${x.id})"><div class="meta"><span>${escapeHtml(x.type)}</span><span>${escapeHtml(x.date)}</span></div><h3>${escapeHtml(x.symbol)} ${escapeHtml(x.title)}</h3><p>${escapeHtml(x.quote)}</p></button>`).join('')}
+    function openSaved(id){const x=getSaved().find(v=>v.id===id);if(!x)return;currentResult=x;$('resultContent').innerHTML=`<button class="back" onclick="showScreen('saved')">‹ 回收藏</button><div class="result-head"><div class="eyebrow">收藏回顧</div><div class="result-hex" style="font-size:5rem">${escapeHtml(x.symbol)}</div><h1 class="result-title">${escapeHtml(x.title)}</h1><p class="muted">${escapeHtml(x.date)}</p></div><div class="result-section quote"><p>「${escapeHtml(x.quote)}」</p></div><button class="secondary" onclick="deleteSaved(${id})">刪除這則收藏</button>`;showScreen('result')}
+    function deleteSaved(id){localStorage.setItem('cx-saved',JSON.stringify(getSaved().filter(x=>x.id!==id)));toast('已刪除');showScreen('saved')}
+    async function shareResult(){if(!currentResult)return;const text=`澄心問道｜${currentResult.title}\n${currentResult.quote}`;try{if(navigator.share)await navigator.share({title:'澄心問道',text});else{await navigator.clipboard.writeText(text);toast('摘要已複製')}}catch(e){}}
+    function resetVoiceButton(){$('voiceBtn').classList.remove('listening');$('voiceBtn').textContent='🎙 語音輸入'}
+    function keyboardDictationFallback(message){const input=$('question');input.focus({preventScroll:false});toast(message||'請點鍵盤上的麥克風開始聽寫')}
+    function startVoice(){const SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){keyboardDictationFallback('請使用手機鍵盤上的麥克風聽寫');return}let heard=false;let r;try{r=new SR();r.lang='zh-TW';r.interimResults=false;r.continuous=false;$('voiceBtn').classList.add('listening');$('voiceBtn').textContent='正在聆聽…';r.onresult=e=>{heard=true;const text=Array.from(e.results).map(x=>x[0].transcript).join('');$('question').value=($('question').value+' '+text).trim().slice(0,300);$('charCount').textContent=$('question').value.length;$('question').dispatchEvent(new Event('input'))};r.onerror=e=>{resetVoiceButton();if(e.error==='not-allowed'||e.error==='service-not-allowed')keyboardDictationFallback('請允許麥克風，或使用鍵盤麥克風聽寫');else if(e.error==='no-speech')toast('沒有聽到聲音，請靠近手機再試一次');else if(e.error==='audio-capture')keyboardDictationFallback('找不到麥克風，請改用鍵盤聽寫');else toast('語音暫時無法使用，請稍後再試')};r.onnomatch=()=>toast('沒有辨識到內容，請再說一次');r.onend=()=>{resetVoiceButton();if(!heard)$('question').focus({preventScroll:true})};r.start()}catch(e){resetVoiceButton();keyboardDictationFallback('請使用手機鍵盤上的麥克風聽寫')}}
+    function toggleLargeText(){const on=!localStorage.getItem('cx-large');if(on)localStorage.setItem('cx-large','1');else localStorage.removeItem('cx-large');document.documentElement.style.fontSize=on?'18px':'16px';$('fontSwitch').classList.toggle('on',on)}
+    function openInfo(){$('infoModal').classList.add('open')} function closeInfo(e){if(!e||e.target===$('infoModal'))$('infoModal').classList.remove('open')}
+    function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1900)}
+    function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+    init();
+  </script>
+</body>
+</html>
